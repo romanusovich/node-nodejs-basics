@@ -5,9 +5,10 @@ const copy = async () => {
     const source = './src/fs/files';
     const destination = './src/fs/files_copy';
     fs.cp(source, destination, { recursive: true, force: false, errorOnExist: true }, (err) => {
-        if (err !== null &&
+        if (err &&
             (err.code === 'ENOENT' ||
                 err.code === 'ERR_FS_CP_EEXIST')) throw Error('FS operation failed');
+        else if (err) throw err;
     });
 };
 
