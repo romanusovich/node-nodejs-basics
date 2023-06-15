@@ -2,8 +2,8 @@ import * as fs from 'fs';
 
 const copy = async () => {
     // Write your code here 
-    const source = './src/fs/files';
-    const destination = './src/fs/files_copy';
+    const source = './files';
+    const destination = './files_copy';
     fs.cp(source, destination, { recursive: true, force: false, errorOnExist: true }, (err) => {
         if (err &&
             (err.code === 'ENOENT' ||
