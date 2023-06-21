@@ -1,9 +1,13 @@
 import * as fs from 'fs';
+import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const copy = async () => {
     // Write your code here 
-    const source = './files';
-    const destination = './files_copy';
+    const source = path.join(__dirname, '/files');
+    const destination = path.join(__dirname, '/files_copy');
     fs.cp(source, destination, { recursive: true, force: false, errorOnExist: true }, (err) => {
         if (err &&
             (err.code === 'ENOENT' ||
